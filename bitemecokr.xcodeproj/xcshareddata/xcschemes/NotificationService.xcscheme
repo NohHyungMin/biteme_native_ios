@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C0AF830829AEE8BB005A08AF"
-               BuildableName = "NotificationServiceExtension.appex"
-               BlueprintName = "NotificationServiceExtension"
+               BlueprintIdentifier = "D8AAA30A2A0B30A8002C80F5"
+               BuildableName = "NotificationService.appex"
+               BlueprintName = "NotificationService"
                ReferencedContainer = "container:bitemecokr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,28 +43,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C0AF82E229AECFD0005A08AF"
-               BuildableName = "bitemecokrTests.xctest"
-               BlueprintName = "bitemecokrTests"
-               ReferencedContainer = "container:bitemecokr.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C0AF82EC29AECFD0005A08AF"
-               BuildableName = "bitemecokrUITests.xctest"
-               BlueprintName = "bitemecokrUITests"
-               ReferencedContainer = "container:bitemecokr.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -80,9 +58,9 @@
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
       <RemoteRunnable
-         runnableDebuggingMode = "0"
+         runnableDebuggingMode = "1"
          BundleIdentifier = "com.uneedcomms.bitemecokr"
-         RemotePath = "/var/containers/Bundle/Application/1434ADBE-5610-4D89-B755-3E657CC7A377/bitemecokr.app">
+         RemotePath = "/var/containers/Bundle/Application/BFB703A6-1A98-45C4-9273-061E616150A0/bitemecokr.app">
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
