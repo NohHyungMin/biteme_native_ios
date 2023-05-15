@@ -19,6 +19,7 @@
 		C0AF830129AEDB16005A08AF /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF830029AEDB16005A08AF /* common.swift */; };
 		C0AF830329AEE72F005A08AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0AF830229AEE72F005A08AF /* GoogleService-Info.plist */; };
 		C0AF831B29AF099C005A08AF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF831A29AF099C005A08AF /* IntroViewController.swift */; };
+		D844E97A2A0BA0890006D759 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844E9792A0BA0890006D759 /* SettingViewController.swift */; };
 		D8AAA2F129FB9000002C80F5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F029FB9000002C80F5 /* FirebaseAnalytics */; };
 		D8AAA2F329FB9000002C80F5 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F229FB9000002C80F5 /* FirebaseAnalyticsSwift */; };
 		D8AAA2F529FB9000002C80F5 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F429FB9000002C80F5 /* FirebaseDynamicLinks */; };
@@ -83,6 +84,7 @@
 		C0AF830229AEE72F005A08AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C0AF830429AEE76F005A08AF /* bitemecokr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bitemecokr.entitlements; sourceTree = "<group>"; };
 		C0AF831A29AF099C005A08AF /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		D844E9792A0BA0890006D759 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D8AAA31A2A0B3178002C80F5 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AAA31C2A0B3178002C80F5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D8AAA31E2A0B3178002C80F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				C0AF82DE29AECFD0005A08AF /* Info.plist */,
 				C0AF830029AEDB16005A08AF /* common.swift */,
 				C0AF831A29AF099C005A08AF /* IntroViewController.swift */,
+				D844E9792A0BA0890006D759 /* SettingViewController.swift */,
 			);
 			path = bitemecokr;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				C0AF82D529AECFCD005A08AF /* ViewController.swift in Sources */,
 				C0AF82D129AECFCD005A08AF /* AppDelegate.swift in Sources */,
 				C0AF82D329AECFCD005A08AF /* SceneDelegate.swift in Sources */,
+				D844E97A2A0BA0890006D759 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.12.1;
+				MARKETING_VERSION = 4.12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -611,7 +615,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.12.1;
+				MARKETING_VERSION = 4.12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -701,19 +705,20 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = 24PS7N8536;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.12.1;
+				MARKETING_VERSION = 4.11.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokr.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -729,19 +734,20 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_TEAM = 24PS7N8536;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.12.1;
+				MARKETING_VERSION = 4.11.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokr.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

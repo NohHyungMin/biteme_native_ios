@@ -9,7 +9,7 @@ import UIKit
 import WebKit;
 import FirebaseMessaging
 
-class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler {
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -55,6 +55,8 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         webView.configuration.allowsInlineMediaPlayback = false
         webView.configuration.preferences.javaScriptEnabled = true
         webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        //JS에서의 호출 대응
+        webView.configuration.userContentController.add(self, name: "setting")
         
         webView.uiDelegate = self
         webView.navigationDelegate = self
@@ -80,7 +82,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
             let statusBarHeight: CGFloat = app.statusBarFrame.size.height
 
             let statusbarView = UIView()
-            statusbarView.backgroundColor = UIColor.black
+            statusbarView.backgroundColor = UIColor.white
             view.addSubview(statusbarView)
 
             statusbarView.translatesAutoresizingMaskIntoConstraints = false
@@ -96,57 +98,27 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         } else {
 //            print("ios 12.0");
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
-            statusBar?.backgroundColor = UIColor.black
+            statusBar?.backgroundColor = UIColor.white
         }
-        
-        
-        
-        // 앱 현재 버전
-        let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-//               print("version : \(version)");
         
         self.webView.configuration.allowsInlineMediaPlayback = true
         
-        // 앱이 완전 종료 되고 다시 들어 올때 값을 확인 함 
-        let pushLink = UserDefaults.standard.string(forKey: "PUSH_URL")
-        if let url = URL(string: pushLink ?? "") {
-            let request = URLRequest(url: url)
-            self.webView.load(request)
-            UserDefaults.standard.removeObject(forKey: "PUSH_URL")
-        } else {
-            Messaging.messaging().token { token, error in
-              if let error = error {
-                print("Error fetching FCM registration token: \(error)")
-                let url = URL(string: appIndexUrl.replacingOccurrences(of: "$version$", with: version))
-                let request = URLRequest(url: url!)
-                print("redirect: \(String(describing: url))")
-                self.webView.load(request)
-              } else if let token = token {
-                print("FCM registration token: \(token)")
-                let url = URL(string: tokenUrl.replacingOccurrences(of: "$version$", with: version).replacingOccurrences(of: "$token$", with: token))
-                let request = URLRequest(url: url!)
-                print("redirect: \(String(describing: url))")
-                self.webView.load(request)
-    //            self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
-              }
-            }
-        }
+       
+        
+        landgindPage()
+        //}
 //        self.webView.configuration.allowsInlineMediaPlayback = false
         
         isFirstRun = false
+        
+
     }
     
     // 푸시 url로 들어왔을 경우 webview load
     func handlePushNotification(urlString: String) {
         print("handlePushNotification", urlString)
-        self.urlString = urlString
-        
-        // WebView 다시 로드
-        if let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
-            webView.load(request)
-            UserDefaults.standard.removeObject(forKey: "PUSH_URL")
-        }
+        //self.urlString = urlString
+        landgindPage()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -167,7 +139,6 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("viewDidAppear")
-        
        
     }
     
@@ -179,7 +150,58 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         
     }
     
+    //푸시클릭 및 페이지 랜딩 처리
+    func landgindPage(){
+        let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        
+        var urlString = appIndexUrl.replacingOccurrences(of: "$version$", with: version)
+        
+        if(common.getDeviceId() != "") {
+            urlString += "&ID=" + common.getDeviceId()
+        }
+        if(common.getOsVersion() != "") {
+            urlString += "&OS_VER=" + common.getOsVersion()
+        }
+//        if(getModelName() != "") {
+//            urlString += "&MODEL=" + getModelName()
+//        }
+        
+        if let pushSeq = UserDefaults.standard.string(forKey: "PUSH_SEQ") {
+            urlString += "&SEQ=" + pushSeq
+            UserDefaults.standard.removeObject(forKey: "PUSH_SEQ")
+        }
+        if let pushLink = UserDefaults.standard.string(forKey: "PUSH_URL") {
+            urlString += "&LINK=" + pushLink
+            UserDefaults.standard.removeObject(forKey: "PUSH_URL")
+        }
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+                let url = URL(string: urlString)
+                let request = URLRequest(url: url!)
+                print("redirect: \(String(describing: url))")
+                self.webView.load(request)
+            } else if let token = token {
+                print("FCM registration token: \(token)")
+                urlString += "&TOKEN=" + token
+                let url = URL(string: urlString)
+                let request = URLRequest(url: url!)
+                self.webView.load(request)
+            }
+        }
+    }
     
+    // JS -> Native CALL
+    @available (iOS 8.0, *)
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if(message.name == "setting"){
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
+            vc.modalPresentationStyle = .pageSheet
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
 
     //alert 처리
    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
@@ -310,8 +332,5 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         webView.reload()
         
     }
-    
-
-
 }
 

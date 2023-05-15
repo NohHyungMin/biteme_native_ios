@@ -228,7 +228,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
       UIApplication.shared.applicationIconBadgeNumber = 0
       let userInfo = response.notification.request.content.userInfo
       let userDefault = UserDefaults.standard
-      
+      // push seq값 저장
+      if let seq = userInfo["seq"] as? String {
+          userDefault.set(seq, forKey: "PUSH_SEQ")
+          userDefault.synchronize()
+      }
       // 링크 값이 있을 경우
       if let link = userInfo["link"] as? String {
           print("url : ",link)
