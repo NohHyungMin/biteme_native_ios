@@ -8,10 +8,13 @@
 import UIKit
 import WebKit;
 import FirebaseMessaging
+import AppTrackingTransparency
+import AdSupport
+import AirBridge
 
 class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler {
     
-    @IBOutlet weak var webView: WKWebView!
+    var webView: WKWebView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var networkerror: UIImageView!
@@ -50,16 +53,77 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         viewClose()
     }
     override func loadView() {
-     
+        
         super.loadView()
-        webView.configuration.allowsInlineMediaPlayback = false
+        
+        //광고 추적 허용 체크
+        if #available(iOS 14, *) {
+            let status = ATTrackingManager.trackingAuthorizationStatus
+            print(status.rawValue) // 최초는 .notDetermined 상태
+            
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    let manager = ASIdentifierManager.shared()
+                    guard manager.isAdvertisingTrackingEnabled else {
+                        return
+                    }
+                    // `advertisingIdentifier` 를 통하여 IDFA를 반환받을 수 있습니다.
+                    // IDFA의 자료형은 UUID 값 입니다.
+                    print(manager.advertisingIdentifier)
+                    print("성공")
+                case .denied:
+                    print("해당 앱 추적 권한 거부 또는 아이폰 설정->개인정보보호->추적 거부 상태")
+                case .notDetermined:
+                    print("승인 요청을 받기전 상태 값")
+                case .restricted:
+                    print("앱 추적 데이터 사용 권한이 제한된 경우")
+                @unknown default:
+                    print("에러 처리..")
+                }
+            }
+        }
+
+        //let configuration = WKWebViewConfiguration()
+                
+//        let event = ABInAppEvent()
+//        event?.setCategory(ABCategory.viewHome)
+//        event?.send()
+        let configuration = WKWebViewConfiguration()
+        let controller = WKUserContentController()
+        AirBridge.webInterface()?.inject(to: controller, withWebToken: "d673b0ff0b9d49daa0bff7c634f953c6")
+
+        configuration.userContentController = controller
+                
+        webView = WKWebView(frame: .zero, configuration: configuration)
+        //if let webView = webView {
+        subView.addSubview(webView)
+//        webView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            webView.leadingAnchor.constraint(equalTo: subView.leadingAnchor),
+//            webView.trailingAnchor.constraint(equalTo: subView.trailingAnchor),
+//            webView.topAnchor.constraint(equalTo: subView.topAnchor),
+//            webView.bottomAnchor.constraint(equalTo: subView.bottomAnchor)])
+        //}
+        
+        webView.configuration.allowsInlineMediaPlayback = true
         webView.configuration.preferences.javaScriptEnabled = true
         webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
         //JS에서의 호출 대응
         webView.configuration.userContentController.add(self, name: "setting")
         
+        
+        
         webView.uiDelegate = self
         webView.navigationDelegate = self
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        let guide = view.safeAreaLayoutGuide
+        webView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+        webView.leftAnchor.constraint(equalTo: guide.leftAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: guide.rightAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
+        
         // 밀어서 뒤로가기 기능 추가
         webView.allowsBackForwardNavigationGestures = true
         self.topView.isHidden = true
@@ -68,8 +132,42 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         webView.isOpaque = false;
         webView.backgroundColor = UIColor.white
         
-        
-    }
+        //에어브릿지 딥링크 콜백
+//        AirBridge.deeplink()?.setDeeplinkCallback({ deeplink in
+//                // 딥링크로 앱이 열리는 경우 작동할 코드
+//                // Airbridge 를 통한 Deeplink = YOUR_SCHEME://...
+//            NSLog("DeeplinkCallback : %@", deeplink)
+//            let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+//
+//            var urlString = appIndexUrl.replacingOccurrences(of: "$version$", with: version)
+//
+//            if(common.getDeviceId() != "") {
+//                urlString += "&ID=" + common.getDeviceId()
+//            }
+//            if(common.getOsVersion() != "") {
+//                urlString += "&OS_VER=" + common.getOsVersion()
+//            }
+//            if(deeplink != "biteme://" && deeplink != "https://"  && deeplink != "http://") {
+//                let changedDeeplink = deeplink.replacingOccurrences(of: "biteme://", with: "https://")
+//                urlString += "&deeplink=Y&LINK=" + changedDeeplink
+//            }
+//            Messaging.messaging().token { token, error in
+//                if let error = error {
+//                    print("Error fetching FCM registration token: \(error)")
+//                    let url = URL(string: urlString)
+//                    let request = URLRequest(url: url!)
+//                    print("redirect: \(String(describing: url))")
+//                    self.webView.load(request)
+//                } else if let token = token {
+//                    print("FCM registration token: \(token)")
+//                    urlString += "&TOKEN=" + token
+//                    let url = URL(string: urlString)
+//                    let request = URLRequest(url: url!)
+//                    self.webView.load(request)
+//                }
+//            }
+//        })
+   }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,18 +198,8 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = UIColor.white
         }
-        
-        self.webView.configuration.allowsInlineMediaPlayback = true
-        
-       
-        
         landgindPage()
-        //}
-//        self.webView.configuration.allowsInlineMediaPlayback = false
-        
         isFirstRun = false
-        
-
     }
     
     // 푸시 url로 들어왔을 경우 webview load
@@ -173,6 +261,13 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         if let pushLink = UserDefaults.standard.string(forKey: "PUSH_URL") {
             urlString += "&LINK=" + pushLink
             UserDefaults.standard.removeObject(forKey: "PUSH_URL")
+        }
+        if let deepLink = UserDefaults.standard.string(forKey: "DEEPLINK") {
+            if(deepLink != "biteme://" && deepLink != "https://"  && deepLink != "http://") {
+                let changedDeeplink = deepLink.replacingOccurrences(of: "biteme://", with: "https://")
+                urlString += "&deeplink=Y&LINK=" + changedDeeplink
+            }
+            UserDefaults.standard.removeObject(forKey: "DEEPLINK")
         }
         Messaging.messaging().token { token, error in
             if let error = error {

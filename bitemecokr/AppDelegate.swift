@@ -9,6 +9,8 @@ import UIKit
 import Firebase
 import FirebaseMessaging
 import UserNotifications
+import AirBridge
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +20,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        AirBridge.setSessionTimeout(1000 * 60 * 5)
+        AirBridge.setting()?.trackingAuthorizeTimeout = 30 * 1000
+        AirBridge.setting()?.isRestartTrackingAuthorizeTimeout = false
+        AirBridge.getInstance("09d40c24d8f54fd0a7866a99d577d7b7", appName:"biteme", withLaunchOptions:launchOptions)
         
+        AirBridge.deeplink()?.setDeeplinkCallback({ deeplink in
+                // 딥링크로 앱이 열리는 경우 작동할 코드
+                // Airbridge 를 통한 Deeplink = YOUR_SCHEME://...
+            // DEEPLINK 저장 해서 ViewController에서 사용 (앱이 완전 종료되고 사용 할때 쓰임)
+            let userDefault = UserDefaults.standard
+            userDefault.set(deeplink, forKey: "DEEPLINK")
+            userDefault.synchronize()
+            
+            if let viewController = UIApplication.shared.keyWindow?.rootViewController?.topMostViewController as? ViewController {
+                // handlePushNotification 메서드 호출
+                viewController.handlePushNotification(urlString: deeplink)
+            }
+        })
         // 알림 초기화
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -111,6 +130,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs device token: \(deviceTokenString)")
         
         Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool
+    {
+        AirBridge.deeplink()?.handleURLSchemeDeeplink(url)
+        
+        return true
+    }
+    
+    func application(_ application: UIApplication,
+                     continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool
+    {
+        AirBridge.deeplink()?.handle(userActivity)
+        
+        return true
     }
     
     

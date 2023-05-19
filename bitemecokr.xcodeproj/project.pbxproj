@@ -20,6 +20,7 @@
 		C0AF830329AEE72F005A08AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0AF830229AEE72F005A08AF /* GoogleService-Info.plist */; };
 		C0AF831B29AF099C005A08AF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF831A29AF099C005A08AF /* IntroViewController.swift */; };
 		D844E97A2A0BA0890006D759 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844E9792A0BA0890006D759 /* SettingViewController.swift */; };
+		D844E97D2A1230800006D759 /* AirBridge in Frameworks */ = {isa = PBXBuildFile; productRef = D844E97C2A1230800006D759 /* AirBridge */; };
 		D8AAA2F129FB9000002C80F5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F029FB9000002C80F5 /* FirebaseAnalytics */; };
 		D8AAA2F329FB9000002C80F5 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F229FB9000002C80F5 /* FirebaseAnalyticsSwift */; };
 		D8AAA2F529FB9000002C80F5 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F429FB9000002C80F5 /* FirebaseDynamicLinks */; };
@@ -95,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D844E97D2A1230800006D759 /* AirBridge in Frameworks */,
 				D8AAA2F329FB9000002C80F5 /* FirebaseAnalyticsSwift in Frameworks */,
 				D8AAA2F129FB9000002C80F5 /* FirebaseAnalytics in Frameworks */,
 				D8AAA2F729FB9000002C80F5 /* FirebaseMessaging in Frameworks */,
@@ -224,6 +226,7 @@
 				D8AAA2F229FB9000002C80F5 /* FirebaseAnalyticsSwift */,
 				D8AAA2F429FB9000002C80F5 /* FirebaseDynamicLinks */,
 				D8AAA2F629FB9000002C80F5 /* FirebaseMessaging */,
+				D844E97C2A1230800006D759 /* AirBridge */,
 			);
 			productName = bitemecokr;
 			productReference = C0AF82CD29AECFCD005A08AF /* bitemecokr.app */;
@@ -319,6 +322,7 @@
 			mainGroup = C0AF82C429AECFCC005A08AF;
 			packageReferences = (
 				D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D844E97B2A1230800006D759 /* XCRemoteSwiftPackageReference "airbridge-ios-sdk-deploy" */,
 			);
 			productRefGroup = C0AF82CE29AECFCD005A08AF /* Products */;
 			projectDirPath = "";
@@ -573,12 +577,18 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bitemecokr/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "바잇미";
+				INFOPLIST_KEY_NSCameraUsageDescription = "상품 리뷰 혹은 상담하기에 필요한 사진, 동영상을 찍기 위해서 카메라 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "상품 리뷰 혹은 상담하기에 필요한 동영상 촬영 중 음성인식을 위해서는 녹음 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "상품 리뷰 혹은 상담하기에 필요한 사진을 가져오기 위해서 앨범 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -605,12 +615,18 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bitemecokr/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "바잇미";
+				INFOPLIST_KEY_NSCameraUsageDescription = "상품 리뷰 혹은 상담하기에 필요한 사진, 동영상을 찍기 위해서 카메라 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "상품 리뷰 혹은 상담하기에 필요한 동영상 촬영 중 음성인식을 위해서는 녹음 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "상품 리뷰 혹은 상담하기에 필요한 사진을 가져오기 위해서 앨범 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -809,6 +825,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D844E97B2A1230800006D759 /* XCRemoteSwiftPackageReference "airbridge-ios-sdk-deploy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ab180/airbridge-ios-sdk-deploy";
+			requirement = {
+				kind = exactVersion;
+				version = 1.32.0;
+			};
+		};
 		D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -820,6 +844,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D844E97C2A1230800006D759 /* AirBridge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D844E97B2A1230800006D759 /* XCRemoteSwiftPackageReference "airbridge-ios-sdk-deploy" */;
+			productName = AirBridge;
+		};
 		D8AAA2F029FB9000002C80F5 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

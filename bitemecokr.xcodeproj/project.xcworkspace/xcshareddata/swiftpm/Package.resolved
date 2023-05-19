@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "airbridge-ios-sdk-deploy",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ab180/airbridge-ios-sdk-deploy",
+      "state" : {
+        "revision" : "4d1df91e200584d852fa361f79eb76be1a177b4d",
+        "version" : "1.32.0"
+      }
+    },
+    {
       "identity" : "boringssl-swiftpm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",

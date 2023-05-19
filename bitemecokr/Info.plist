@@ -6,12 +6,12 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Viewer</string>
 			<key>CFBundleURLName</key>
 			<string>com.uneedcomms.bitemecokr</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>bitemecokr.page.link</string>
+				<string>biteme</string>
 			</array>
 		</dict>
 	</array>
@@ -100,9 +100,11 @@
 		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDarkContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>co.ab180.airbridge.trackingLink.customDomains</key>
+	<array>
+		<string>go.biteme.co.kr</string>
+	</array>
 </dict>
 </plist>
