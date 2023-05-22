@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E18F7B20D2BD59C32FAFC9D /* Pods_bitemecokr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFA66839C454A1668F87855 /* Pods_bitemecokr.framework */; };
 		C0AF82D129AECFCD005A08AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF82D029AECFCD005A08AF /* AppDelegate.swift */; };
 		C0AF82D329AECFCD005A08AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF82D229AECFCD005A08AF /* SceneDelegate.swift */; };
 		C0AF82D529AECFCD005A08AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF82D429AECFCD005A08AF /* ViewController.swift */; };
@@ -68,6 +69,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		22EDF43D1C231EA2D0A3796B /* Pods-bitemecokr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bitemecokr.debug.xcconfig"; path = "Target Support Files/Pods-bitemecokr/Pods-bitemecokr.debug.xcconfig"; sourceTree = "<group>"; };
+		5A32FE111C944EF992D5CCAE /* Pods-bitemecokr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bitemecokr.release.xcconfig"; path = "Target Support Files/Pods-bitemecokr/Pods-bitemecokr.release.xcconfig"; sourceTree = "<group>"; };
+		7FFA66839C454A1668F87855 /* Pods_bitemecokr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bitemecokr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AF82CD29AECFCD005A08AF /* bitemecokr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bitemecokr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AF82D029AECFCD005A08AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0AF82D229AECFCD005A08AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 				D8AAA2F129FB9000002C80F5 /* FirebaseAnalytics in Frameworks */,
 				D8AAA2F729FB9000002C80F5 /* FirebaseMessaging in Frameworks */,
 				D8AAA2F529FB9000002C80F5 /* FirebaseDynamicLinks in Frameworks */,
+				0E18F7B20D2BD59C32FAFC9D /* Pods_bitemecokr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +136,8 @@
 		2A836FAB02508FB10DAC9801 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				22EDF43D1C231EA2D0A3796B /* Pods-bitemecokr.debug.xcconfig */,
+				5A32FE111C944EF992D5CCAE /* Pods-bitemecokr.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -144,6 +151,7 @@
 				D8AAA31B2A0B3178002C80F5 /* NotificationServiceExtension */,
 				C0AF82CE29AECFCD005A08AF /* Products */,
 				2A836FAB02508FB10DAC9801 /* Pods */,
+				C224D0D0982841AA416BDE7F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +202,14 @@
 			path = bitemecokrUITests;
 			sourceTree = "<group>";
 		};
+		C224D0D0982841AA416BDE7F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FFA66839C454A1668F87855 /* Pods_bitemecokr.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D8AAA31B2A0B3178002C80F5 /* NotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,10 +226,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0AF82F729AECFD0005A08AF /* Build configuration list for PBXNativeTarget "bitemecokr" */;
 			buildPhases = (
+				7CE81A7C5AFF188DB7E8CB29 /* [CP] Check Pods Manifest.lock */,
 				C0AF82C929AECFCD005A08AF /* Sources */,
 				C0AF82CA29AECFCD005A08AF /* Frameworks */,
 				C0AF82CB29AECFCD005A08AF /* Resources */,
 				C0AF831429AEE8BB005A08AF /* Embed Foundation Extensions */,
+				B557F0CC3765886E9C8CE5F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -370,6 +388,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CE81A7C5AFF188DB7E8CB29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bitemecokr-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B557F0CC3765886E9C8CE5F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bitemecokr/Pods-bitemecokr-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bitemecokr/Pods-bitemecokr-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bitemecokr/Pods-bitemecokr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C0AF82C929AECFCD005A08AF /* Sources */ = {
@@ -566,6 +626,7 @@
 		};
 		C0AF82F829AECFD0005A08AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22EDF43D1C231EA2D0A3796B /* Pods-bitemecokr.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -604,6 +665,7 @@
 		};
 		C0AF82F929AECFD0005A08AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A32FE111C944EF992D5CCAE /* Pods-bitemecokr.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

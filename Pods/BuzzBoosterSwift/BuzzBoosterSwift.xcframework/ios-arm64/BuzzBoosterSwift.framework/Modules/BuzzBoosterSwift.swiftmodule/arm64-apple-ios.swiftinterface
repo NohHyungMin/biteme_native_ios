@@ -1,0 +1,158 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BuzzBoosterSwift
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+@_exported import BuzzBoosterSwift
+import BuzzRxSwift
+import CoreData
+import Foundation
+import SDWebImage
+import Swift
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class CampaignEntryView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public var clickableViews: [UIKit.UIView] {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc @_Concurrency.MainActor(unsafe) public func setEntryName(_ entryName: Swift.String)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class StampCampaignView : UIKit.UIView {
+  @objc deinit
+}
+extension BuzzBoosterSwift.StampCampaignView : UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc final public func numberOfSections(in collectionView: UIKit.UICollectionView) -> Swift.Int
+}
+extension BuzzBoosterSwift.StampCampaignView : UIKit.UICollectionViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc final public func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc final public func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+}
+extension BuzzBoosterSwift.StampCampaignView : UIKit.UICollectionViewDelegateFlowLayout {
+  @_Concurrency.MainActor(unsafe) @objc final public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, sizeForItemAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGSize
+}
+@objc public enum BSTCampaignType : Swift.Int {
+  case attendance
+  case referral
+  case optInMarketing
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BuzzBoosterSwift.BBSEventLocalDto {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<BuzzBoosterSwift.BBSEventLocalDto>
+  @objc @NSManaged dynamic public var eventId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var eventName: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var eventTime: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var eventValues: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var userId: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@_inheritsConvenienceInitializers @objc(BIEventLocalDTO) public class BIEventLocalDTO : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(BBSEventLocalDto) public class BBSEventLocalDto : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+public class LayerPersistentHelper {
+  public init(with layer: QuartzCore.CALayer)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class ConfigComponent {
+  @objc deinit
+}
+extension BuzzBoosterSwift.BIEventLocalDTO {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<BuzzBoosterSwift.BIEventLocalDTO>
+  @objc @NSManaged dynamic public var eventId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var eventName: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var eventTime: Foundation.Date? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var eventValues: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var userId: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class BSTCampaignFloatingActionButton : BuzzBoosterSwift.CampaignEntryView {
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers final public class ExternalPointEntryViewModel : ObjectiveC.NSObject {
+  @objc deinit
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public func bstRootViewController() -> UIKit.UIViewController?
+}
+extension Swift.KeyedDecodingContainer {
+  public func decodeBool(forKey key: Swift.KeyedDecodingContainer<K>.Key) throws -> Swift.Bool
+}
+@_inheritsConvenienceInitializers @objc(BSTLogger) public class Logger : ObjectiveC.NSObject {
+  @objc public static func log(_ message: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension UIKit.UIColor {
+  public static func bstOf(hexString: Swift.String) -> UIKit.UIColor
+}
+@_hasMissingDesignatedInitializers public class PushComponent {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BSTSwift) public class BSTSwift : ObjectiveC.NSObject {
+  @objc public static var shared: BuzzBoosterSwift.BSTSwift?
+  @objc public static var userId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc weak public static var optInMarketingCampaignDelegate: BuzzBoosterSwift.BSTOptInMarketingCampaignDelegate?
+  @objc weak public static var customCampaignDelegate: BuzzBoosterSwift.BSTCustomCampaignDelegate?
+  @objc public static func `init`(appKey: Swift.String, baseUrl: Swift.String)
+  @objc public static func sendEvent(eventName: Swift.String)
+  @objc public static func sendEvent(eventName: Swift.String, eventValues: [Swift.String : Swift.String])
+  @objc public static func showCampaign(with viewController: UIKit.UIViewController)
+  @objc public static func showCampaign(with viewController: UIKit.UIViewController, campaignId: Swift.String)
+  @objc public static func showCampaign(with viewController: UIKit.UIViewController, type: BuzzBoosterSwift.BSTCampaignType)
+  @objc public static func showInAppMessage(with viewController: UIKit.UIViewController)
+  @objc public static func setDeviceToken(_ token: Foundation.Data)
+  @objc public static func setPushToken(_ token: Swift.String)
+  @objc public static func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+  @objc public static func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  @objc deinit
+}
+extension BuzzBoosterSwift.BSTSwift {
+  @objc dynamic public func fetchPollingState(onComplete: @escaping (Swift.Bool, Swift.Int) -> Swift.Void, onError: @escaping (Swift.Error) -> Swift.Void)
+}
+extension BuzzBoosterSwift.BSTCampaignType : Swift.Equatable {}
+extension BuzzBoosterSwift.BSTCampaignType : Swift.Hashable {}
+extension BuzzBoosterSwift.BSTCampaignType : Swift.RawRepresentable {}

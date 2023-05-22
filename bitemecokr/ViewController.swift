@@ -11,6 +11,19 @@ import FirebaseMessaging
 import AppTrackingTransparency
 import AdSupport
 import AirBridge
+import BuzzBooster
+import Foundation
+
+//BuzzBooster 로그인 정보
+struct LoginInfo: Codable {
+    var id: String
+    var type: String
+}
+
+//BuzzBooster 이벤트 정보
+struct EventInfo: Codable {
+    var event_name: String
+}
 
 class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler {
     
@@ -27,8 +40,6 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
     var isFirstRun = true
     var url: URL?
     var urlString: String?
-    
-    
     
     @IBAction func actBtnBack(_ sender: Any) {
         
@@ -109,10 +120,15 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         webView.configuration.allowsInlineMediaPlayback = true
         webView.configuration.preferences.javaScriptEnabled = true
         webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        
         //JS에서의 호출 대응
         webView.configuration.userContentController.add(self, name: "setting")
-        
-        
+        //BuzzBooster 호출
+        webView.configuration.userContentController.add(self, name: "buzzLogin")
+        webView.configuration.userContentController.add(self, name: "buzzLogout")
+        webView.configuration.userContentController.add(self, name: "buzzShowCampaign")
+        webView.configuration.userContentController.add(self, name: "buzzShowCampaignWithId")
+        webView.configuration.userContentController.add(self, name: "buzzSendEvent")
         
         webView.uiDelegate = self
         webView.navigationDelegate = self
@@ -290,11 +306,40 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
     @available (iOS 8.0, *)
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if(message.name == "setting"){
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
             vc.modalPresentationStyle = .pageSheet
             self.present(vc, animated: true, completion: nil)
+        }else if(message.name == "buzzLogin"){
+            let decoder = JSONDecoder()
+            do {
+                let json = (message.body as! String).data(using: .utf8)!
+                let decoded = try decoder.decode(LoginInfo.self, from: json)
+                let user = BSTUser { builder in
+                    builder.userId = decoded.id as NSString           //  (필수) 유저 식별자
+                    builder.marketingStatus = .optIn                   //  (권장) 마케팅 수신 동의 여부
+                    builder.properties = ["login_type": decoded.type] //  (권장) 로그인 타입
+                }
+                BuzzBooster.setUser(user)
+                print("id" + decoded.id)
+                print("type" + decoded.type)
+            }catch{}
+        }else if(message.name == "buzzLogout"){
+            BuzzBooster.setUser(nil)
+        }else if(message.name == "buzzShowCampaign"){
+            BuzzBooster.showCampaign(with: self)
+        }else if(message.name == "buzzShowCampaignWithId"){
+            BuzzBooster.showCampaign(with: self, campaignId: message.body as! String)
+            print(message.body)
+        }else if(message.name == "buzzSendEvent"){
+            let decoder = JSONDecoder()
+            do {
+                let json = (message.body as! String).data(using: .utf8)!
+                let decoded = try decoder.decode(EventInfo.self, from: json)
+                BuzzBooster.sendEvent(withEventName: decoded.event_name);
+                print("event:" + decoded.event_name)
+            }catch{}
+            
         }
     }
 
@@ -427,5 +472,18 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         webView.reload()
         
     }
+    
+//    func jsonDecoder(_ data: String) -> LoginInfo? {
+//        var decoder = JSONDecoder()
+//        guard let jsonData = data.data(using: .utf8) else {return nil}
+//
+//        do {
+//            let decoded: LoginInfo = try decoder.decode(LoginInfo.self, from: jsonData)
+//            return decoded
+//        } catch{
+//
+//        }
+//        return nil
+//    }
 }
 

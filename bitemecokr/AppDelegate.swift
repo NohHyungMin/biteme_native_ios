@@ -10,7 +10,7 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 import AirBridge
-
+import BuzzBooster
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,12 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //BuzzBooster 초기화
+        let config = BSTConfig { builder in
+            //개발 키
+          //builder.appKey = "551289185238729"
+            //운영 키
+          builder.appKey = "438941575517733"
+        }
+        BuzzBooster.initialize(with: config)
+        BuzzBooster.startService()
+        
+        //에어브릿지 초기화
         // Override point for customization after application launch.
         AirBridge.setSessionTimeout(1000 * 60 * 5)
         AirBridge.setting()?.trackingAuthorizeTimeout = 30 * 1000
         AirBridge.setting()?.isRestartTrackingAuthorizeTimeout = false
         AirBridge.getInstance("09d40c24d8f54fd0a7866a99d577d7b7", appName:"biteme", withLaunchOptions:launchOptions)
         
+        //에어브릿지 딥링크 처리
         AirBridge.deeplink()?.setDeeplinkCallback({ deeplink in
                 // 딥링크로 앱이 열리는 경우 작동할 코드
                 // Airbridge 를 통한 Deeplink = YOUR_SCHEME://...
@@ -71,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
           // For iOS 10 display notification (sent via APNS)
           UNUserNotificationCenter.current().delegate = self
-
+        
 //          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
 //          UNUserNotificationCenter.current().requestAuthorization(
 //            options: authOptions,

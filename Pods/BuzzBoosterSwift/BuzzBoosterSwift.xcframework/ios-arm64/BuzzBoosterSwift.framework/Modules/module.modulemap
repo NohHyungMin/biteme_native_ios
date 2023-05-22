@@ -1,0 +1,11 @@
+framework module BuzzBoosterSwift {
+  umbrella header "BuzzBoosterSwift.h"
+
+  export *
+  module * { export * }
+}
+
+module BuzzBoosterSwift.Swift {
+  header "BuzzBoosterSwift-Swift.h"
+  requires objc
+}

@@ -1,0 +1,6 @@
+framework module BuzzMutator {
+  umbrella header "BuzzMutator.h"
+
+  export *
+  module * { export * }
+}
