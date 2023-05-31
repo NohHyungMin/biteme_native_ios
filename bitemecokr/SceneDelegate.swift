@@ -65,6 +65,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        //푸시 뱃지 값 초기화
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        let userDefault = UserDefaults.standard
+        userDefault.set(0, forKey: "BADGECOUNT")
+        userDefault.synchronize()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

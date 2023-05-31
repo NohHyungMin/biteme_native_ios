@@ -15,7 +15,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var model: UILabel!
     @IBOutlet weak var osVersion: UILabel!
     @IBAction func doDelCache() {
-        self.alert("알림", "캐시 및 쿠키 삭제하시겠습니까?")
+        self.alert("알림", "캐시 및 쿠키를 삭제하시겠습니까?")
     }
     
     @IBAction func doViewClose(){

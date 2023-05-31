@@ -11,6 +11,7 @@ import FirebaseMessaging
 import UserNotifications
 import AirBridge
 import BuzzBooster
+import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -61,18 +62,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
                 
         // 앱버전 체크 후 업데이트  Start
-        _ = try?  self.isUpdateAvailable { (update, error) in
-        if let error = error {
-            print(error)
-        } else if let update = update {
-
-    //              print("update : \(update)")
-              if update {
-                 self.appUpdate()
-                 return
-              }
-           }
-        }
+//        _ = try?  self.isUpdateAvailable { (update, error) in
+//        if let error = error {
+//            print(error)
+//        } else if let update = update {
+//
+//    //              print("update : \(update)")
+//              if update {
+//                 //self.appUpdate()
+//                 return
+//              }
+//           }
+//        }
         // 앱버전 체크 후 업데이트  End
         
         // Override point for customization after application launch.
@@ -99,8 +100,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("Notification permission denied")
                     }
                 }
+                self.setNotification()
             }
-
+            
             application.registerForRemoteNotifications()
             
         } else {
@@ -128,9 +130,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         printState()
         return true
     }
-    
-    
-    
     
     
     // fcm 토큰이 등록이 되었을 때
@@ -168,48 +167,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // 업데이트 함수
-    func isUpdateAvailable(completion: @escaping (Bool?, Error?) -> Void) throws -> URLSessionDataTask {
-        guard let info = Bundle.main.infoDictionary,
-            let currentVersion = info["CFBundleShortVersionString"] as? String, // 현재 버전
-            let identifier = info["CFBundleIdentifier"] as? String,
-            let url = URL(string: "http://itunes.apple.com/kr/lookup?bundleId=\(identifier)") else {
-                throw VersionError.invalidBundleInfo
-        }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            do {
-                if let error = error { throw error }
-                guard let data = data else { throw VersionError.invalidResponse }
-                let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any]
-                guard let result = (json?["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String else {
-                    throw VersionError.invalidResponse
-                }
+//    func isUpdateAvailable(completion: @escaping (Bool?, Error?) -> Void) throws -> URLSessionDataTask {
+//        guard let info = Bundle.main.infoDictionary,
+//            let currentVersion = info["CFBundleShortVersionString"] as? String, // 현재 버전
+//            let identifier = info["CFBundleIdentifier"] as? String,
+//            let url = URL(string: "http://itunes.apple.com/kr/lookup?bundleId=\(identifier)") else {
+//                throw VersionError.invalidBundleInfo
+//        }
+//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            do {
+//                if let error = error { throw error }
+//                guard let data = data else { throw VersionError.invalidResponse }
+//                let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any]
+//                guard let result = (json?["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String else {
+//                    throw VersionError.invalidResponse
+//                }
+//
+//
+//                let verInt = NSString.init(string: version.components(separatedBy: ["."]).joined()).intValue
+//                let currentVerInt = NSString.init(string: currentVersion.components(separatedBy: ["."]).joined()).intValue
+//
+//                print("verFloat : \(verInt) : currentVerFloat : \(currentVerInt)")
+//                completion(verInt > currentVerInt, nil) // 현재 버전이 앱스토어 버전보다 큰지를 Bool값으로 반환
+//            } catch {
+//                completion(nil, error)
+//            }
+//        }
+//        task.resume()
+//        return task
+//    }
 
-
-                let verInt = NSString.init(string: version.components(separatedBy: ["."]).joined()).intValue
-                let currentVerInt = NSString.init(string: currentVersion.components(separatedBy: ["."]).joined()).intValue
-                
-                print("verFloat : \(verInt) : currentVerFloat : \(currentVerInt)")
-                completion(verInt > currentVerInt, nil) // 현재 버전이 앱스토어 버전보다 큰지를 Bool값으로 반환
-            } catch {
-                completion(nil, error)
-            }
-        }
-        task.resume()
-        return task
-    }
-
-    func appUpdate() {
-       // id뒤에 값은 앱정보에 Apple ID에 써있는 숫자
-       if let url = URL(string: "itms-apps://itunes.apple.com/app/id1439162792"), UIApplication.shared.canOpenURL(url) {
-
-          // 앱스토어로 이동\
-          if #available(iOS 10.0, *) {
-             UIApplication.shared.open(url, options: [:], completionHandler: nil)
-          } else {
-              UIApplication.shared.openURL(url)
-          }
-       }
-    }
+//    func appUpdate() {
+//       // id뒤에 값은 앱정보에 Apple ID에 써있는 숫자
+//       if let url = URL(string: "itms-apps://itunes.apple.com/app/id1439162792"), UIApplication.shared.canOpenURL(url) {
+//
+//          // 앱스토어로 이동\
+//          if #available(iOS 10.0, *) {
+//             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//          } else {
+//              UIApplication.shared.openURL(url)
+//          }
+//       }
+//    }
     
     func application(
             _ application: UIApplication,
@@ -217,8 +216,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
         ) {
             print("didReceiveRemoteNotification")
-            let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-            UIApplication.shared.applicationIconBadgeNumber = 1
+            //푸쉬 받을 때 실행
+            let badgeCount = UserDefaults.standard.integer(forKey: "BADGECOUNT")
+            UIApplication.shared.applicationIconBadgeNumber = badgeCount + 1
+            let userDefault = UserDefaults.standard
+            userDefault.set(badgeCount + 1, forKey: "BADGECOUNT")
+            userDefault.synchronize()
+            
             completionHandler(.newData)
     }
     
@@ -250,12 +254,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func printState() {
         switch UIApplication.shared.applicationState {
-        case .active:
-            print("state: active")
-        case .background:
-            print("state: background")
-        case .inactive:
-            print("state: inactive")
+            case .active:
+                print("state: active")
+            case .background:
+                print("state: background")
+            case .inactive:
+                print("state: inactive")
+        default:
+                print("default")
+        }
+    }
+    
+    func setNotification(){
+        // 다른 권한 요청 창보다 늦게 띄우기
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if #available(iOS 14, *) {
+                ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                    switch status {
+                    case .authorized:        // 허용됨
+                        print("Authorized")   // IDFA 접근
+                    case .denied:        // 거부됨
+                        print("Denied")
+                    case .notDetermined:    // 결정되지 않음
+                        print("Not Determined")
+                    case .restricted:        // 제한됨
+                        print("Restricted")
+                    @unknown default:        // 알려지지 않음
+                        print("Unknown")
+                    }
+                })
+            }
         }
     }
 }

@@ -22,7 +22,7 @@ class common{
     // 기기번호 조회
     static func getDeviceId() -> String {
         guard let vendorID = UIDevice().identifierForVendor else { return ""}
-        print("vendorID \(vendorID.uuidString)")
+        //print("vendorID \(vendorID.uuidString)")
         return vendorID.uuidString
     }
     
