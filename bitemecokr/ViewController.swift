@@ -11,7 +11,7 @@ import FirebaseMessaging
 
 import AdSupport
 import AirBridge
-import BuzzBooster
+//import BuzzBooster
 import Foundation
 import SafariServices
 
@@ -33,12 +33,12 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var networkerror: UIImageView!
     @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var btnHome: UIButton!
-    @IBOutlet weak var btnLogo: UIButton!
+    //@IBOutlet weak var btnHome: UIButton!
+    //@IBOutlet weak var btnLogo: UIButton!
     //var webView: WKWebView!
     @IBOutlet weak var subView: UIView!
     var popupWebView: WKWebView!
-    //var createWebView: WKWebView!
+    var popupWebViewWithouClose: WKWebView!
     var isFirstRun = true
     var url: URL?
     var urlString: String?
@@ -79,7 +79,15 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         AirBridge.webInterface()?.inject(to: controller, withWebToken: "d673b0ff0b9d49daa0bff7c634f953c6")
 
         configuration.userContentController = controller
-                
+        
+        if #available(iOS 10.0, *) {
+            configuration.mediaTypesRequiringUserActionForPlayback = []
+        }
+        configuration.allowsInlineMediaPlayback = true
+        configuration.preferences.javaScriptEnabled = true
+        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        
+        
         webView = WKWebView(frame: .zero, configuration: configuration)
         //if let webView = webView {
         subView.addSubview(webView)
@@ -91,9 +99,9 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
 //            webView.bottomAnchor.constraint(equalTo: subView.bottomAnchor)])
         //}
         
-        webView.configuration.allowsInlineMediaPlayback = true
-        webView.configuration.preferences.javaScriptEnabled = true
-        webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        //webView.configuration.allowsInlineMediaPlayback = true
+        //webView.configuration.preferences.javaScriptEnabled = true
+        //webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
         
         //JS에서의 호출 대응
         webView.configuration.userContentController.add(self, name: "setting")
@@ -109,7 +117,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         
         webView.translatesAutoresizingMaskIntoConstraints = false
         let guide = view.safeAreaLayoutGuide
-        webView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
         webView.leftAnchor.constraint(equalTo: guide.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: guide.rightAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
@@ -118,7 +126,8 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         // 밀어서 뒤로가기 기능 추가
         webView.allowsBackForwardNavigationGestures = true
         self.topView.isHidden = true
-        self.topView.layer.addBorder([.bottom], color: UIColor.lightGray    , width: 1.0)
+        //self.topView.layer.addBorder([.top], color: UIColor.lightGray, width: 0.5)
+        
         webView.scrollView.bounces = false
         webView.isOpaque = false;
         webView.backgroundColor = UIColor.white
@@ -261,7 +270,9 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
                     urlString += "&deeplink=Y&LINK=" + changedDeeplink
                 }
             }
-            if(deepLink == "biteme://"){
+            if((deepLink == "biteme://"
+            || deepLink.contains("isppay"))   //isp결제 후 돌아오면
+               && self.webView.url != nil){  //첫시작이 아니고 기본 스키마로 들어올 경우 링크 이동 안함
                 return
             }
         }
@@ -290,7 +301,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
             let vc = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
             vc.modalPresentationStyle = .pageSheet
             self.present(vc, animated: true, completion: nil)
-        }else if(message.name == "buzzLogin"){
+        }/*else if(message.name == "buzzLogin"){
             let decoder = JSONDecoder()
             do {
                 let json = (message.body as! String).data(using: .utf8)!
@@ -320,7 +331,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
                 //print("event:" + decoded.event_name)
             }catch{}
             
-        }
+        }*/
     }
 
     //alert 처리
@@ -363,47 +374,48 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         
         //if url.description.lowercased().range(of: "clubclio.co.kr") != nil
         if navigationAction.targetFrame == nil, let url = navigationAction.request.url {
-            if !isFirstRun
-            {
-                if url.description.hasPrefix(strDefaultUrl){
-                    self.topView.isHidden = true
-                }else
-                {
-                    //무조건 삭제 하려고 주석 처리함
-//                    self.topView.isHidden = false
-                    self.topView.isHidden = true
-                }
-            }
-            // sns 로그인
+//            if !isFirstRun
+//            {
+//                if url.description.hasPrefix(strDefaultUrl){
+//                    self.topView.isHidden = true
+//                }else
+//                {
+//                    //무조건 삭제 하려고 주석 처리함
+////                    self.topView.isHidden = false
+//                    self.topView.isHidden = true
+//                }
+//            }
+            // sns 로그인 및 상담하기
             if url.description.lowercased().range(of: "nid.naver.com") != nil ||
                 url.description.lowercased().range(of: "kauth.kakao.com") != nil ||
-                url.description.lowercased().range(of: "www.facebook.com/v") != nil {
+                url.description.lowercased().range(of: "www.facebook.com/v") != nil ||
+                url.description.lowercased().range(of: "biteme.channel.io") != nil {
                 
-                popupWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: self.subView.frame.size.width, height: self.view.frame.size.height), configuration: configuration)
-                popupWebView?.translatesAutoresizingMaskIntoConstraints = false
-                popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                popupWebView?.uiDelegate = self
-                popupWebView?.navigationDelegate = self
-                popupWebView?.scrollView.showsHorizontalScrollIndicator = false // 세로 스크롤 Show여부
-                popupWebView?.scrollView.showsVerticalScrollIndicator = false // 가로 스크롤 Show여부
-                popupWebView?.scrollView.pinchGestureRecognizer?.isEnabled = false
-                popupWebView?.scrollView.bounces = false
-                popupWebView?.allowsLinkPreview = false
+                popupWebViewWithouClose = WKWebView(frame: CGRect(x: 0, y: 0, width: self.subView.frame.size.width, height: self.subView.frame.size.height), configuration: configuration)
+                popupWebViewWithouClose?.translatesAutoresizingMaskIntoConstraints = false
+                popupWebViewWithouClose?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                popupWebViewWithouClose?.uiDelegate = self
+                popupWebViewWithouClose?.navigationDelegate = self
+                popupWebViewWithouClose?.scrollView.showsHorizontalScrollIndicator = false // 세로 스크롤 Show여부
+                popupWebViewWithouClose?.scrollView.showsVerticalScrollIndicator = false // 가로 스크롤 Show여부
+                popupWebViewWithouClose?.scrollView.pinchGestureRecognizer?.isEnabled = false
+                popupWebViewWithouClose?.scrollView.bounces = false
+                popupWebViewWithouClose?.allowsLinkPreview = false
                 
-                UIView.transition(with: self.view, duration: 1, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {self.subView.addSubview(self.popupWebView)}, completion: nil);
+                UIView.transition(with: self.view, duration: 0, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {self.subView.addSubview(self.popupWebViewWithouClose)}, completion: nil);
                 
         
-                return popupWebView!
+                return popupWebViewWithouClose!
             } else {
                 // 사파리 브라우저 오픈
-                if url.description.lowercased().range(of: "http://") != nil ||
-                                  url.description.lowercased().range(of: "https://") != nil ||
-                                  url.description.lowercased().range(of: "mailto:") != nil {
-                    let safariView = SFSafariViewController(url: url)
-                    present(safariView, animated: true, completion: nil)
-                    let _getSchemeStr = webView.url?.scheme
-                }
-                return nil
+//                if url.description.lowercased().range(of: "http://") != nil ||
+//                                  url.description.lowercased().range(of: "https://") != nil ||
+//                                  url.description.lowercased().range(of: "mailto:") != nil {
+//                    let safariView = SFSafariViewController(url: url)
+//                    present(safariView, animated: false, completion: nil)
+//                    //let _getSchemeStr = webView.url?.scheme
+//                }
+//                return nil
                 
                 //뷰를 생성하는 경우
 //                let frame = UIScreen.main.bounds
@@ -428,7 +440,24 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
 //                    print("사파리 브라우저 오픈",url)
 //                  UIApplication.shared.open(url)
 //                }
+                self.topView.isHidden = false
                 
+                popupWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: self.subView.frame.size.width, height: self.subView.frame.size.height), configuration: configuration)
+                popupWebView?.translatesAutoresizingMaskIntoConstraints = false
+                popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                popupWebView?.uiDelegate = self
+                popupWebView?.navigationDelegate = self
+                //popupWebView?.scrollView.showsHorizontalScrollIndicator = false // 세로 스크롤 Show여부
+                //popupWebView?.scrollView.showsVerticalScrollIndicator = false // 가로 스크롤 Show여부
+                //popupWebView?.scrollView.pinchGestureRecognizer?.isEnabled = false
+                popupWebView?.scrollView.bounces = false
+                popupWebView?.allowsLinkPreview = false
+                popupWebView?.allowsBackForwardNavigationGestures = true
+                
+                UIView.transition(with: self.view, duration: 0, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {self.subView.addSubview(self.popupWebView)}, completion: nil);
+                
+        
+                return popupWebView!
             }
         }
         return nil
@@ -437,8 +466,8 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
     //새창 닫기
     //iOS9.0 이상
     func webViewDidClose(_ webView: WKWebView) {
-        popupWebView?.removeFromSuperview()
-        popupWebView = nil
+        popupWebViewWithouClose?.removeFromSuperview()
+        popupWebViewWithouClose = nil
     }
     
     // 카카오 링크 열기
@@ -454,12 +483,15 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
 //
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
        
-//        if navigationAction.request.url?.description.lowercased().range(of: "clubclio.co.kr") != nil{
-//            self.topView.isHidden = false
-//
-//        }else{
-//            self.topView.isHidden = true
-//        }
+        if webView.url?.description.lowercased().range(of: strDefaultUrl) != nil  {        //카카오 로그인, 페이코 로그인 화면에서 뒤로갈수 있는 기능
+            if popupWebView == nil && popupWebViewWithouClose == nil {
+                self.topView.isHidden = true
+            }
+        }else{
+            if popupWebView == nil && popupWebViewWithouClose == nil{
+                self.topView.isHidden = false
+            }
+        }
        if let url = navigationAction.request.url, url.scheme != "http" && url.scheme != "https" {
            UIApplication.shared.open(url)
          decisionHandler(.cancel)
@@ -468,13 +500,20 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
        }
      }
     
+    
+    
     func viewClose(){
-      
-        UIView.transition(with: self.view, duration: 1, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
-            self.topView.isHidden = true
-            self.popupWebView?.removeFromSuperview()
-            self.popupWebView = nil
-                          }, completion: nil);
+        if self.popupWebView != nil {
+            UIView.transition(with: self.view, duration: 0, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
+                self.topView.isHidden = true
+                self.popupWebView?.removeFromSuperview()
+                self.popupWebView = nil
+            }, completion: nil);
+        }else{
+            if self.webView.canGoBack{
+                self.webView.goBack()
+            }
+        }
         
     }
     

@@ -16,7 +16,7 @@ let strLogoUrl = "https://www.biteme.co.kr/shop/App_main"
 let appIndexUrl = "https://www.biteme.co.kr/shop/App_main?OS=IOS&VERSION=$version$"
 //let tokenUrl = "https://www.biteme.co.kr/shop/App_main?OS=IOS&VERSION=$version$&TOKEN=$token$"
 //let pushUrl = "https://www.biteme.co.kr/shop/App_main?OS=IOS&VERSION=$version$&TOKEN=$token$&SEQ=$seq$&LINK=$link$"
-let imgLaunchScreen = "https://api.devbiteme.co.kr/app/biteme_app.php"
+let imgLaunchScreen = "https://api.biteme.co.kr/app/biteme_app.php"
 
 class common{
     // 기기번호 조회

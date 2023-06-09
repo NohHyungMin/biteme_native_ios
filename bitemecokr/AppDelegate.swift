@@ -10,7 +10,7 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 import AirBridge
-import BuzzBooster
+//import BuzzBooster
 import AppTrackingTransparency
 
 @main
@@ -21,14 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //BuzzBooster 초기화
-        let config = BSTConfig { builder in
+        //let config = BSTConfig { builder in
             //개발 키
           //builder.appKey = "551289185238729"
             //운영 키
-          builder.appKey = "438941575517733"
-        }
-        BuzzBooster.initialize(with: config)
-        BuzzBooster.startService()
+        //  builder.appKey = "438941575517733"
+        //}
+        //BuzzBooster.initialize(with: config)
+        //BuzzBooster.startService()
         
         //에어브릿지 초기화
         // Override point for customization after application launch.
