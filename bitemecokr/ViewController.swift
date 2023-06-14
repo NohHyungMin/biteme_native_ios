@@ -406,7 +406,10 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
                 
         
                 return popupWebViewWithouClose!
-            } else {
+            } else if url.description.lowercased().range(of: "bizbite.me") != nil {
+                UIApplication.shared.open(url)
+                return nil
+            }else {
                 // 사파리 브라우저 오픈
 //                if url.description.lowercased().range(of: "http://") != nil ||
 //                                  url.description.lowercased().range(of: "https://") != nil ||
@@ -456,7 +459,6 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
                 
                 UIView.transition(with: self.view, duration: 0, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {self.subView.addSubview(self.popupWebView)}, completion: nil);
                 
-        
                 return popupWebView!
             }
         }
