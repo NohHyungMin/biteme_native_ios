@@ -17,8 +17,8 @@ import AppTrackingTransparency
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
-    
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //BuzzBooster 초기화
         //let config = BSTConfig { builder in
@@ -215,7 +215,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             didReceiveRemoteNotification userInfo: [AnyHashable : Any],
             fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
         ) {
-            print("didReceiveRemoteNotification")
+            print(UIApplication.shared.applicationState)
+            if UIApplication.shared.applicationState == .inactive {
+                    if let link = userInfo["link"] as? String {
+                        let url = URL(string: link)// 푸시 알림 페이로드의 딥링크
+                            
+                        AirBridge.deeplink()?.handleNotificationDeeplink(url!)
+                    }
+                }
+            
             //푸쉬 받을 때 실행
             let badgeCount = UserDefaults.standard.integer(forKey: "BADGECOUNT")
             UIApplication.shared.applicationIconBadgeNumber = badgeCount + 1
@@ -301,6 +309,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
   // 푸시 클릭 시 실행
   func userNotificationCenter(_ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+      
+      if UIApplication.shared.applicationState == .inactive,
+             response.actionIdentifier == UNNotificationDefaultActionIdentifier
+      {
+          let userInfo = response.notification.request.content.userInfo
+          if let link = userInfo["link"] as? String {
+              let url = URL(string: link)// 푸시 알림 페이로드의 딥링크
+                  
+              AirBridge.deeplink()?.handleNotificationDeeplink(url!)
+          }
+      }
       
       UIApplication.shared.applicationIconBadgeNumber = 0
       let userInfo = response.notification.request.content.userInfo

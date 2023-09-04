@@ -7,175 +7,77 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8F38BC35-218E-4EDD-939D-8CE31514671E"
+            uuid = "EABB20D0-3BFB-4993-AE76-D7846F575359"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
+            filePath = "bitemecokr/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "landgindPage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "17DAEFE0-DDA9-4DEA-ABB0-01802EEE1485"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "landgindPage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "11F04E76-76DB-44A1-83EC-DCAB3503A01F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
-            landmarkName = "landgindPage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BE571007-CEEA-4663-AB1E-C69DA546535E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
-            landmarkName = "landgindPage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9EEEABC8-049F-4562-B2A5-EA237510DAE4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
-            landmarkName = "landgindPage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "110CF7E3-4BE8-4D71-B2A2-423C56E2D2F4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "landgindPage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B794B4E5-66EB-4418-AE99-7A743B072021"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
-            landmarkName = "webView(_:createWebViewWith:for:windowFeatures:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "946D14A0-16BA-4CD1-8EBC-930368EF17BB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "webView(_:createWebViewWith:for:windowFeatures:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3CC5E373-7BD8-40FA-B264-4971AA668E94"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
-            landmarkName = "viewClose()"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
+            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "3CC5E373-7BD8-40FA-B264-4971AA668E94 - b1ad66e03ebd8d68"
+                  uuid = "EABB20D0-3BFB-4993-AE76-D7846F575359 - fd6c36c912f34221"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in bitemecokr.ViewController.viewClose() -&gt; ()"
+                  symbolName = "bitemecokr.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, didReceive: __C.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
                   moduleName = "bitemecokr"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/ViewController.swift"
+                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/AppDelegate.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "502"
-                  endingLineNumber = "502"
-                  offsetFromSymbolStart = "392">
+                  startingLineNumber = "321"
+                  endingLineNumber = "321"
+                  offsetFromSymbolStart = "1460">
                </Location>
                <Location
-                  uuid = "3CC5E373-7BD8-40FA-B264-4971AA668E94 - b1ad66e03ebd8c70"
+                  uuid = "EABB20D0-3BFB-4993-AE76-D7846F575359 - fd6c36c912f34221"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in bitemecokr.ViewController.viewClose() -&gt; ()"
+                  symbolName = "bitemecokr.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, didReceive: __C.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
                   moduleName = "bitemecokr"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/ViewController.swift"
+                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/AppDelegate.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "510"
-                  endingLineNumber = "510"
-                  offsetFromSymbolStart = "272">
+                  startingLineNumber = "321"
+                  endingLineNumber = "321"
+                  offsetFromSymbolStart = "1136">
+               </Location>
+               <Location
+                  uuid = "EABB20D0-3BFB-4993-AE76-D7846F575359 - fd6c36c912f34200"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bitemecokr.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, didReceive: __C.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
+                  moduleName = "bitemecokr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "1136">
+               </Location>
+               <Location
+                  uuid = "EABB20D0-3BFB-4993-AE76-D7846F575359 - fd6c36c912f34200"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bitemecokr.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, didReceive: __C.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
+                  moduleName = "bitemecokr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "1299">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -183,47 +85,62 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2C86342A-A885-427F-BC0B-C62FD5317CF4"
+            uuid = "7D7F9110-9BF0-4454-8BFA-84FF3ACAFABD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "bitemecokr/ViewController.swift"
+            filePath = "bitemecokr/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "516"
-            endingLineNumber = "516"
-            landmarkName = "viewClose()"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "2C86342A-A885-427F-BC0B-C62FD5317CF4 - ae7e6f1ac962c5d4"
+                  uuid = "7D7F9110-9BF0-4454-8BFA-84FF3ACAFABD - ad2f11373dd06a16"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "bitemecokr.ViewController.viewClose() -&gt; ()"
+                  symbolName = "bitemecokr.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, fetchCompletionHandler: (__C.UIBackgroundFetchResult) -&gt; ()) -&gt; ()"
                   moduleName = "bitemecokr"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/ViewController.swift"
+                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/AppDelegate.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "506"
-                  endingLineNumber = "506"
-                  offsetFromSymbolStart = "808">
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "1236">
                </Location>
                <Location
-                  uuid = "2C86342A-A885-427F-BC0B-C62FD5317CF4 - ae7e6f1ac962c4dc"
+                  uuid = "7D7F9110-9BF0-4454-8BFA-84FF3ACAFABD - ad2f11373dd06a16"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "bitemecokr.ViewController.viewClose() -&gt; ()"
+                  symbolName = "bitemecokr.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, fetchCompletionHandler: (__C.UIBackgroundFetchResult) -&gt; ()) -&gt; ()"
                   moduleName = "bitemecokr"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/ViewController.swift"
+                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/AppDelegate.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "514"
-                  endingLineNumber = "514"
-                  offsetFromSymbolStart = "608">
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "1252">
+               </Location>
+               <Location
+                  uuid = "7D7F9110-9BF0-4454-8BFA-84FF3ACAFABD - ad2f11373dd06a16"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bitemecokr.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, fetchCompletionHandler: (__C.UIBackgroundFetchResult) -&gt; ()) -&gt; ()"
+                  moduleName = "bitemecokr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hyung-minnoh/Desktop/biteme/native/ios/bitemecokr/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "1080">
                </Location>
             </Locations>
          </BreakpointContent>
