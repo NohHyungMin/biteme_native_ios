@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import FirebaseMessaging
 
 class IntroViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +55,29 @@ class IntroViewController: UIViewController {
             task.resume()
         }
         // 3초 뒤에 다음 뷰 컨트롤러로 이동
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ViewController")
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: false, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            Messaging.messaging().token { token, error in
+                if let error = error {
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.fcmToken = ""
+                    print("Error fetching FCM registration token: \(error)")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "ViewController")
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: false, completion: nil)
+                }
+                else if let token = token {
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.fcmToken = token
+                    print("FCM registration token: \(token)")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "ViewController")
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: false, completion: nil)
+                }
+            }
+            
+            
         }
         
         

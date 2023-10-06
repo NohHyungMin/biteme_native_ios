@@ -70,7 +70,6 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         super.loadView()
 
         //let configuration = WKWebViewConfiguration()
-                
 //        let event = ABInAppEvent()
 //        event?.setCategory(ABCategory.viewHome)
 //        event?.send()
@@ -132,47 +131,11 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         webView.isOpaque = false;
         webView.backgroundColor = UIColor.white
         webView.allowsLinkPreview = false
-        //에어브릿지 딥링크 콜백
-//        AirBridge.deeplink()?.setDeeplinkCallback({ deeplink in
-//                // 딥링크로 앱이 열리는 경우 작동할 코드
-//                // Airbridge 를 통한 Deeplink = YOUR_SCHEME://...
-//            NSLog("DeeplinkCallback : %@", deeplink)
-//            let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-//
-//            var urlString = appIndexUrl.replacingOccurrences(of: "$version$", with: version)
-//
-//            if(common.getDeviceId() != "") {
-//                urlString += "&ID=" + common.getDeviceId()
-//            }
-//            if(common.getOsVersion() != "") {
-//                urlString += "&OS_VER=" + common.getOsVersion()
-//            }
-//            if(deeplink != "biteme://" && deeplink != "https://"  && deeplink != "http://") {
-//                let changedDeeplink = deeplink.replacingOccurrences(of: "biteme://", with: "https://")
-//                urlString += "&deeplink=Y&LINK=" + changedDeeplink
-//            }
-//            Messaging.messaging().token { token, error in
-//                if let error = error {
-//                    print("Error fetching FCM registration token: \(error)")
-//                    let url = URL(string: urlString)
-//                    let request = URLRequest(url: url!)
-//                    print("redirect: \(String(describing: url))")
-//                    self.webView.load(request)
-//                } else if let token = token {
-//                    print("FCM registration token: \(token)")
-//                    urlString += "&TOKEN=" + token
-//                    let url = URL(string: urlString)
-//                    let request = URLRequest(url: url!)
-//                    self.webView.load(request)
-//                }
-//            }
-//        })
-   }
 
+   }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         
         if #available(iOS 13.0, *) {
 //            print("ios 13.0");
@@ -198,7 +161,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = UIColor.white
         }
-        landgindPage()
+        landingPage()
         isFirstRun = false
     }
     
@@ -206,7 +169,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
     func handlePushNotification(urlString: String) {
         print("handlePushNotification", urlString)
         //self.urlString = urlString
-        landgindPage()
+        landingPage()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -239,7 +202,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
     }
     
     //푸시클릭 및 페이지 랜딩 처리
-    func landgindPage(){
+    func landingPage(){
         let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         
         var urlString = appIndexUrl.replacingOccurrences(of: "$version$", with: version)
@@ -276,20 +239,21 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
                 return
             }
         }
-        Messaging.messaging().token { token, error in
-            if let error = error {
-                print("Error fetching FCM registration token: \(error)")
-                let url = URL(string: urlString)
-                let request = URLRequest(url: url!)
-                print("redirect: \(String(describing: url))")
-                self.webView.load(request)
-            } else if let token = token {
-                print("FCM registration token: \(token)")
-                urlString += "&TOKEN=" + token
-                let url = URL(string: urlString)
-                let request = URLRequest(url: url!)
-                self.webView.load(request)
-            }
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if(appDelegate.fcmToken != ""){
+            urlString += "&TOKEN=" + appDelegate.fcmToken
+        }
+        var url = URL(string: urlString)
+        if(url != nil){
+            let request = URLRequest(url: url!)
+            self.webView.load(request)
+        }else{
+            let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+            var urlString = appIndexUrl.replacingOccurrences(of: "$version$", with: version)
+            url = URL(string: urlString)
+            let request = URLRequest(url: url!)
+            self.webView.load(request)
         }
     }
     

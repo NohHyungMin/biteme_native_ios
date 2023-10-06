@@ -17,7 +17,7 @@ import AppTrackingTransparency
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    var fcmToken: String = ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //BuzzBooster 초기화
@@ -117,14 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 메시징 델리겟
         Messaging.messaging().delegate = self
         
-        Messaging.messaging().token { token, error in
-            if let error = error {
-                print("Error fetching FCM registration token: \(error)")
-            }
-            else if let token = token {
-                print("FCM registration token: \(token)")
-            }
-        }
+       
         
         print("application didFinishLaunchingWithOptions")
         printState()
@@ -219,8 +212,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if UIApplication.shared.applicationState == .inactive {
                     if let link = userInfo["link"] as? String {
                         let url = URL(string: link)// 푸시 알림 페이로드의 딥링크
-                            
-                        AirBridge.deeplink()?.handleNotificationDeeplink(url!)
+                        if(url != nil){
+                            AirBridge.deeplink()?.handleNotificationDeeplink(url!)
+                        }
                     }
                 }
             
@@ -316,8 +310,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
           let userInfo = response.notification.request.content.userInfo
           if let link = userInfo["link"] as? String {
               let url = URL(string: link)// 푸시 알림 페이로드의 딥링크
-                  
-              AirBridge.deeplink()?.handleNotificationDeeplink(url!)
+              if(url != nil){
+                  AirBridge.deeplink()?.handleNotificationDeeplink(url!)
+              }
           }
       }
       

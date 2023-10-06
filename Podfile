@@ -6,9 +6,9 @@ target 'bitemecokr' do
   use_frameworks!
 
   # Pods for bitemecokr
- # pod 'Firebase/Core'
- # pod 'Firebase/Messaging'
- # pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Crashlytics'
   pod 'BuzzBooster', '~> 2.0.6'
 end
 

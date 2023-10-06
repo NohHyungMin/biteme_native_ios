@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E18F7B20D2BD59C32FAFC9D /* Pods_bitemecokr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFA66839C454A1668F87855 /* Pods_bitemecokr.framework */; };
+		3E8FB519D47C85F533253F3C /* Pods_bitemecokr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0015FBA4240F3CEC61A99FBC /* Pods_bitemecokr.framework */; };
 		C0AF82D129AECFCD005A08AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF82D029AECFCD005A08AF /* AppDelegate.swift */; };
 		C0AF82D329AECFCD005A08AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF82D229AECFCD005A08AF /* SceneDelegate.swift */; };
 		C0AF82D529AECFCD005A08AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF82D429AECFCD005A08AF /* ViewController.swift */; };
@@ -22,10 +22,7 @@
 		C0AF831B29AF099C005A08AF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF831A29AF099C005A08AF /* IntroViewController.swift */; };
 		D844E97A2A0BA0890006D759 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844E9792A0BA0890006D759 /* SettingViewController.swift */; };
 		D844E97D2A1230800006D759 /* AirBridge in Frameworks */ = {isa = PBXBuildFile; productRef = D844E97C2A1230800006D759 /* AirBridge */; };
-		D8AAA2F129FB9000002C80F5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F029FB9000002C80F5 /* FirebaseAnalytics */; };
-		D8AAA2F329FB9000002C80F5 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F229FB9000002C80F5 /* FirebaseAnalyticsSwift */; };
-		D8AAA2F529FB9000002C80F5 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F429FB9000002C80F5 /* FirebaseDynamicLinks */; };
-		D8AAA2F729FB9000002C80F5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D8AAA2F629FB9000002C80F5 /* FirebaseMessaging */; };
+		D87989792AB9755200EA6BBE /* AdServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87989782AB9755200EA6BBE /* AdServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D8AAA31D2A0B3178002C80F5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AAA31C2A0B3178002C80F5 /* NotificationService.swift */; };
 		D8AAA3212A0B3178002C80F5 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D8AAA31A2A0B3178002C80F5 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -69,9 +66,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0015FBA4240F3CEC61A99FBC /* Pods_bitemecokr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bitemecokr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EDF43D1C231EA2D0A3796B /* Pods-bitemecokr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bitemecokr.debug.xcconfig"; path = "Target Support Files/Pods-bitemecokr/Pods-bitemecokr.debug.xcconfig"; sourceTree = "<group>"; };
 		5A32FE111C944EF992D5CCAE /* Pods-bitemecokr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bitemecokr.release.xcconfig"; path = "Target Support Files/Pods-bitemecokr/Pods-bitemecokr.release.xcconfig"; sourceTree = "<group>"; };
-		7FFA66839C454A1668F87855 /* Pods_bitemecokr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bitemecokr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AF82CD29AECFCD005A08AF /* bitemecokr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bitemecokr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AF82D029AECFCD005A08AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0AF82D229AECFCD005A08AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +87,7 @@
 		C0AF830429AEE76F005A08AF /* bitemecokr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bitemecokr.entitlements; sourceTree = "<group>"; };
 		C0AF831A29AF099C005A08AF /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		D844E9792A0BA0890006D759 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		D87989782AB9755200EA6BBE /* AdServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdServices.framework; path = System/Library/Frameworks/AdServices.framework; sourceTree = SDKROOT; };
 		D8AAA31A2A0B3178002C80F5 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AAA31C2A0B3178002C80F5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D8AAA31E2A0B3178002C80F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,12 +98,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87989792AB9755200EA6BBE /* AdServices.framework in Frameworks */,
 				D844E97D2A1230800006D759 /* AirBridge in Frameworks */,
-				D8AAA2F329FB9000002C80F5 /* FirebaseAnalyticsSwift in Frameworks */,
-				D8AAA2F129FB9000002C80F5 /* FirebaseAnalytics in Frameworks */,
-				D8AAA2F729FB9000002C80F5 /* FirebaseMessaging in Frameworks */,
-				D8AAA2F529FB9000002C80F5 /* FirebaseDynamicLinks in Frameworks */,
-				0E18F7B20D2BD59C32FAFC9D /* Pods_bitemecokr.framework in Frameworks */,
+				3E8FB519D47C85F533253F3C /* Pods_bitemecokr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +200,8 @@
 		C224D0D0982841AA416BDE7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7FFA66839C454A1668F87855 /* Pods_bitemecokr.framework */,
+				D87989782AB9755200EA6BBE /* AdServices.framework */,
+				0015FBA4240F3CEC61A99FBC /* Pods_bitemecokr.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -232,6 +228,7 @@
 				C0AF82CB29AECFCD005A08AF /* Resources */,
 				C0AF831429AEE8BB005A08AF /* Embed Foundation Extensions */,
 				B557F0CC3765886E9C8CE5F5 /* [CP] Embed Pods Frameworks */,
+				D84864052ACE94D3000D5BEB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -240,10 +237,6 @@
 			);
 			name = bitemecokr;
 			packageProductDependencies = (
-				D8AAA2F029FB9000002C80F5 /* FirebaseAnalytics */,
-				D8AAA2F229FB9000002C80F5 /* FirebaseAnalyticsSwift */,
-				D8AAA2F429FB9000002C80F5 /* FirebaseDynamicLinks */,
-				D8AAA2F629FB9000002C80F5 /* FirebaseMessaging */,
 				D844E97C2A1230800006D759 /* AirBridge */,
 			);
 			productName = bitemecokr;
@@ -339,7 +332,6 @@
 			);
 			mainGroup = C0AF82C429AECFCC005A08AF;
 			packageReferences = (
-				D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D844E97B2A1230800006D759 /* XCRemoteSwiftPackageReference "airbridge-ios-sdk-deploy" */,
 			);
 			productRefGroup = C0AF82CE29AECFCD005A08AF /* Products */;
@@ -428,6 +420,25 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bitemecokr/Pods-bitemecokr-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D84864052ACE94D3000D5BEB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -543,7 +554,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -560,7 +571,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -614,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -632,8 +643,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = bitemecokr/bitemecokr.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = 24PS7N8536;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bitemecokr/Info.plist;
@@ -650,14 +662,15 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.12.3;
+				MARKETING_VERSION = 4.12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -672,8 +685,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = bitemecokr/bitemecokr.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = 24PS7N8536;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bitemecokr/Info.plist;
@@ -690,14 +704,15 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.12.3;
+				MARKETING_VERSION = 4.12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -752,7 +767,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24PS7N8536;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokrUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -771,7 +786,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24PS7N8536;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokrUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -787,7 +802,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = 24PS7N8536;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
@@ -800,7 +815,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.12.2;
+				MARKETING_VERSION = 4.12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokr.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -816,7 +831,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = 24PS7N8536;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
@@ -829,7 +844,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.12.2;
+				MARKETING_VERSION = 4.12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uneedcomms.bitemecokr.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -899,14 +914,6 @@
 				version = 1.32.0;
 			};
 		};
-		D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -914,26 +921,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D844E97B2A1230800006D759 /* XCRemoteSwiftPackageReference "airbridge-ios-sdk-deploy" */;
 			productName = AirBridge;
-		};
-		D8AAA2F029FB9000002C80F5 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		D8AAA2F229FB9000002C80F5 /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
-		};
-		D8AAA2F429FB9000002C80F5 /* FirebaseDynamicLinks */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDynamicLinks;
-		};
-		D8AAA2F629FB9000002C80F5 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D8AAA2EF29FB8FFF002C80F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
